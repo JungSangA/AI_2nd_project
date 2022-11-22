@@ -167,9 +167,10 @@ http://www.tooplate.com/view/2102-constructive
                   /></i>
                   <div class="media-body">
                     <a class="sensor hidden">temp</a>
-                    <h3>Temp</h3>
-                    <p>온도 Dashboard</p>
-                    <a id="cur-temp">32</a>
+                    <h3>
+                      현재 온도 :
+                      <a id="cur-temp" class="cur">32℃</a>
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -187,8 +188,10 @@ http://www.tooplate.com/view/2102-constructive
                   /></i>
                   <div class="media-body">
                     <a class="sensor hidden">humidity</a>
-                    <h3>Humidity</h3>
-                    <p>습도 Dashboard</p>
+                    <h3>
+                      현재 습도 :
+                      <a id="cur-hum" class="cur">32%</a>
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -206,8 +209,10 @@ http://www.tooplate.com/view/2102-constructive
                   /></i>
                   <div class="media-body">
                     <a class="sensor hidden">illumination</a>
-                    <h3>Illumination</h3>
-                    <p>조도 Dashboard</p>
+                    <h3>
+                      현재 조도 :
+                      <a id="cur-ill" class="cur">32?</a>
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -225,8 +230,10 @@ http://www.tooplate.com/view/2102-constructive
                   /></i>
                   <div class="media-body">
                     <a class="sensor hidden">gas</a>
-                    <h3>Gas</h3>
-                    <p>가스 Dashboard</p>
+                    <h3>
+                      현재 가스 :
+                      <a id="cur-gas" class="cur">32?</a>
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -244,8 +251,10 @@ http://www.tooplate.com/view/2102-constructive
                   /></i>
                   <div class="media-body">
                     <a class="sensor hidden">co2</a>
-                    <h3>Co2</h3>
-                    <p>이산화탄소 Dashboard</p>
+                    <h3>
+                      현재 이산화탄소 :
+                      <a id="cur-co2" class="cur">32ppm</a>
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -263,8 +272,10 @@ http://www.tooplate.com/view/2102-constructive
                   /></i>
                   <div class="media-body">
                     <a class="sensor hidden">dust</a>
-                    <h3>Dust</h3>
-                    <p>미세먼지 Dashboard</p>
+                    <h3>
+                      현재 먼지 :
+                      <a id="cur-dust" class="cur">32μg/m3</a>
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -655,5 +666,6 @@ http://www.tooplate.com/view/2102-constructive
       });
     </script>
     <script src="js/function.js"></script>
+    <script src="js/dataRefresh.js"></script>
   </body>
 </html>

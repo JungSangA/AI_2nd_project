@@ -4,6 +4,9 @@
   height: 110%;
   width: 105%;
 }
+.click:hover > #cur-temp {
+  background-color: red;
+}
 
 .modal-div {
   position: fixed;
@@ -37,4 +40,8 @@
 }
 .hidden {
   display: none;
+}
+
+.cur {
+  font-size: 50px;
 }
