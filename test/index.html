@@ -25,6 +25,7 @@ http://www.tooplate.com/view/2102-constructive
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
     <link rel="stylesheet" href="css/tooplate-style.css" />
     <link rel="stylesheet" href="css/function.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script>
       var renderPage = true;
 
@@ -117,8 +118,12 @@ http://www.tooplate.com/view/2102-constructive
         <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 tm-content">
           <div class="modal-div hidden">
             <div class="modal-overlay"></div>
-            <div class="modal-content">
+            <div
+              class="modal-content"
+              style="overflow: scroll; width: 60%; height: 520px"
+            >
               <h2 style="color: black">blank</h2>
+              <canvas id="chart"> chart 정보 입력 </canvas>
               <button id="closeBtn">❌</button>
             </div>
           </div>

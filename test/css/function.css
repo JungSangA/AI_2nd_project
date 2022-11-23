@@ -28,20 +28,29 @@
   position: absolute;
 }
 .modal-content {
-  background-color: white;
-
-  position: relative;
+  background-color: silver;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: relative; */
   text-align: center;
-  padding: 50px 100px;
+  padding: 50px 40px;
   border-radius: 10px;
-  width: 30%;
+  width: 60%;
+  height: 60%;
   top: 0px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
+
 .hidden {
   display: none;
 }
 
 .cur {
   font-size: 50px;
+}
+
+#closeBtn {
+  border-radius: 10px;
+  width: 50px;
 }

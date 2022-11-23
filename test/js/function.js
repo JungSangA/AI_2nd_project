@@ -4,22 +4,17 @@ const overlay = modal.querySelector(".modal-overlay");
 const content = modal.querySelector(".modal-content h2");
 const dash = document.getElementById("dashboard");
 
-const openModal = () => {
-  modal.classList.remove("hidden");
-};
-const closeModal = () => {
-  modal.classList.add("hidden");
-};
-overlay.addEventListener("click", closeModal);
-closeBtn.addEventListener("click", closeModal);
-
-// 온도 클릭
-const temp = dash.querySelector("#temp");
-const tempClick = () => {
-  const sensor = temp.querySelector(".media-body .sensor");
-
-  //
-  // DB (temp) -> 테이블검색을 하고, 몇분동안 data를 가지고 와서
+// chart.js 쓰기
+function getChart(viewSensor) {
+  window.chartColors = {
+    red: "rgb(255, 99, 132)",
+    orange: "rgb(255, 159, 64)",
+    yellow: "rgb(255, 205, 86)",
+    green: "rgb(75, 192, 192)",
+    blue: "rgb(54, 162, 235)",
+    purple: "rgb(153, 102, 255)",
+    grey: "rgb(231,233,237)",
+  };
   const data = [
     { time: "2022-11-22T11:25:21Z", temp: 21, humid: 32 },
     { time: "2022-11-22T11:25:22Z", temp: 21, humid: 32 },
@@ -120,21 +115,107 @@ const tempClick = () => {
     { time: "2022-11-22T11:26:57Z", temp: 20, humid: 31 },
     { time: "2022-11-22T11:26:58Z", temp: 21, humid: 31 },
     { time: "2022-11-22T11:26:59Z", temp: 23, humid: 31 },
-    { time: "2022-11-22T16:48:17Z", temp: 50, humid: 50 },
+    { time: "2022-11-22T16:48:17Z", temp: 24, humid: 34 },
   ];
+  var chart = document.getElementById("chart").getContext("2d");
+  var timeArr = [];
+  var sensorArr = [];
+  for (i = 0; i < data.length; i++) {
+    // console.log(data[i]);
+    timeArr.push(data[i].time.substring(11, 19));
+    if (viewSensor == "temp") {
+      sensorArr.push(data[i].temp);
+    } else if (viewSensor == "humid") {
+      sensorArr.push(data[i].humid);
+    }
+  }
+  if (window.chart2 != undefined) {
+    window.chart2.destroy();
+  }
+  window.chart2 = new Chart(chart, {
+    type: "line",
+    data: {
+      labels: timeArr,
+      datasets: [
+        {
+          label: viewSensor,
+          backgroundColor: window.chartColors.red,
+          borderColor: window.chartColors.red,
+
+          data: sensorArr,
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      title: {
+        display: true,
+        text: "Latest 100 Temp chart",
+      },
+      tooltips: {
+        mode: "index",
+        intersect: false,
+      },
+      hover: {
+        mode: "nearest",
+        intersect: true,
+      },
+      scales: {
+        xAxes: [
+          {
+            display: true,
+            scaleLabel: {
+              display: true,
+              // labelString: "Time",
+            },
+          },
+        ],
+        yAxes: [
+          {
+            display: true,
+            scaleLabel: {
+              display: true,
+            },
+          },
+        ],
+      },
+    },
+  });
+  //
+}
+
+const openModal = () => {
+  modal.classList.remove("hidden");
+};
+const closeModal = () => {
+  modal.classList.add("hidden");
+};
+overlay.addEventListener("click", closeModal);
+closeBtn.addEventListener("click", closeModal);
+
+// 온도 클릭
+const temp = dash.querySelector("#temp");
+const tempClick = () => {
+  const sensor = temp.querySelector(".media-body .sensor");
+
+  //
+  // DB (temp) -> 테이블검색을 하고, 몇분동안 data를 가지고 와서
+
   // data값 변경
-  content.innerHTML = `${data[99].temp}`;
-  console.log(data.length);
+  content.innerHTML = "온도";
+  getChart("temp");
   // 그래프로 그려줌
   modal.classList.remove("hidden");
 };
 temp.addEventListener("click", tempClick);
 
-//  클릭
+// 습도 클릭
 const hum = dash.querySelector("#hum");
 const humClick = () => {
   const sensor = hum.querySelector(".media-body .sensor");
-  content.innerHTML = sensor.innerHTML;
+  content.innerHTML = "습도";
+  getChart("humid");
   modal.classList.remove("hidden");
 };
 hum.addEventListener("click", humClick);
