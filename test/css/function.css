@@ -37,7 +37,7 @@
   padding: 50px 40px;
   border-radius: 10px;
   width: 60%;
-  height: 60%;
+  height: 550px;
   top: 0px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
@@ -45,12 +45,39 @@
 .hidden {
   display: none;
 }
+.table {
+  display: table;
+}
 
 .cur {
   font-size: 50px;
 }
 
-#closeBtn {
+.closeBtn {
+  margin-top: 15px;
   border-radius: 10px;
   width: 50px;
+}
+
+.insert-img {
+  margin-right: 20px;
+}
+
+#chart {
+  max-width: 640px;
+  max-height: 500px;
+}
+
+.cctv-box {
+  display: table-cell;
+  vertical-align: middle;
+  /* overflow: hidden; */
+  margin-bottom: 30px;
+  display: inline;
+}
+
+.cctv {
+  max-width: 480px;
+  max-height: 320px;
+  object-fit: cover;
 }

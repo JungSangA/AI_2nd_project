@@ -17,7 +17,7 @@ http://www.tooplate.com/view/2102-constructive
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"
     />
-    <!-- Google web font "Open Sans" -->
+    <!-- CSS 및 JS 파일 -->
     <link rel="stylesheet" href="css/fontawesome-all.min.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/magnific-popup.css" />
@@ -25,7 +25,9 @@ http://www.tooplate.com/view/2102-constructive
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
     <link rel="stylesheet" href="css/tooplate-style.css" />
     <link rel="stylesheet" href="css/function.css" />
+    <link rel="stylesheet" href="css/toggle.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
     <script>
       var renderPage = true;
 
@@ -62,6 +64,9 @@ http://www.tooplate.com/view/2102-constructive
 
           <div class="inner">
             <nav id="tmMainNav" class="tm-main-nav">
+              <h1 id = "year">2022년</h1>
+              <h1 id = "today">11월 28일</h1>
+              <h2 id = "time">10:15:39</h2>
               <ul>
                 <li>
                   <a
@@ -71,8 +76,24 @@ http://www.tooplate.com/view/2102-constructive
                     data-bg-img="constructive_bg_01.jpg"
                     data-page="#tm-section-1"
                   >
-                    <i class="fas fa-home tm-nav-fa-icon"></i>
+                    <i class="fas tm-nav-fa-icon">
+                      <img class = "invert-img" src="./img/home.png" height = "35px" width = "35px">
+                    </i>
                     <span>DashBoard</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#control"
+                    class="scrolly"
+                    data-bg-img="constructive_bg_02.jpg"
+                    data-page="#tm-section-5"
+                    data-page-type="carousel"
+                  >
+                     <i class="fas tm-nav-fa-icon">
+                      <img class = "invert-img" src="./img/settings.png" height = "30px" width = "30px">
+                    </i>
+                    <span>Control</span>
                   </a>
                 </li>
                 <li>
@@ -84,7 +105,9 @@ http://www.tooplate.com/view/2102-constructive
                     data-page="#tm-section-2"
                     data-page-type="carousel"
                   >
-                    <i class="fas fa-map tm-nav-fa-icon"></i>
+                     <i class="fas tm-nav-fa-icon">
+                      <img class = "invert-img" src="./img/open-book.png" height = "30px" width = "30px">
+                    </i>
                     <span>Our Products</span>
                   </a>
                 </li>
@@ -95,8 +118,10 @@ http://www.tooplate.com/view/2102-constructive
                     data-bg-img="constructive_bg_03.jpg"
                     data-page="#tm-section-3"
                   >
-                    <i class="fas fa-users tm-nav-fa-icon"></i>
-                    <span>Our Company</span>
+                     <i class="fas tm-nav-fa-icon">
+                      <img class = "invert-img" src="./img/group.png" height = "30px" width = "30px">
+                    </i>
+                    <span>Our Team</span>
                   </a>
                 </li>
                 <li>
@@ -106,7 +131,9 @@ http://www.tooplate.com/view/2102-constructive
                     data-bg-img="constructive_bg_04.jpg"
                     data-page="#tm-section-4"
                   >
-                    <i class="fas fa-comments tm-nav-fa-icon"></i>
+                     <i class="fas tm-nav-fa-icon">
+                      <img class = "invert-img" src="./img/chat.png" height = "30px" width = "30px">
+                    </i>
                     <span>Contact Us</span>
                   </a>
                 </li>
@@ -116,17 +143,29 @@ http://www.tooplate.com/view/2102-constructive
         </div>
 
         <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 tm-content">
+
+          <!-- modal 창 띄우기 -->
           <div class="modal-div hidden">
             <div class="modal-overlay"></div>
+            <!-- sensors -->
             <div
-              class="modal-content"
-              style="overflow: scroll; width: 60%; height: 520px"
-            >
+              id = "modal-sensor"
+              class="modal-content hidden">
               <h2 style="color: black">blank</h2>
               <canvas id="chart"> chart 정보 입력 </canvas>
-              <button id="closeBtn">❌</button>
+              <button id="sensor-closeBtn" class = "closeBtn">❌</button>
+            </div>
+            <!-- cctv -->
+            <div id = "modal-cctv" class = "modal-content hidden" style="width: 40%; height: 20%;">
+              <h2 style="color: black">카메라</h2>
+              <div class = "cctv-box">
+                <img class = "cctv" src = "http://192.168.70.20:8091/?action=stream" />
+              </div>
+              <br/>
+              <button id="cctv-closeBtn" class = "closeBtn">❌</button>
             </div>
           </div>
+
           <!-- section 1 -->
           <section
             id="tm-section-1"
@@ -138,26 +177,29 @@ http://www.tooplate.com/view/2102-constructive
                 <h2 class="tm-text-shadow">Dashboard</h2>
               </header>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-12 mb-4">
-              <div
-                id="click"
-                class="media tm-bg-transparent-black tm-border-white"
-              >
+
+            <!-- Dashboard -->
+            <div id="dashboard" class="row">
+              <!-- 카메라 dashboard -->
+              <div class="col-sm-12 col-md-6 col-lg-12 mb-4">
+                <div id = "cctv" class="media tm-bg-transparent-black tm-border-white click">
                 <i class="tm-icon-circled tm-icon-media">
                   <img
                     class="invert-img"
                     src="./img/cctv.png"
                     height="60"
                     width="60"
-                /></i>
-                <div class="media-body">
-                  <h3>카메라</h3>
-                  <p>카메라 Dashboard</p>
+                  /></i>
+                  <div class="media-body">
+                    <h3>카메라</h3>
+                    <!-- <div class = "cctv-box">
+                      <img class = "cctv" src = "http://192.168.70.20:8091/?action=stream" />
+                    </div> -->
+                  </div>
                 </div>
               </div>
-            </div>
-            <!-- 온도,습도,조도,가스,CO2,먼지 등 dashboard -->
-            <div id="dashboard" class="row">
+
+              <!-- 온도,습도,조도,가스,CO2,먼지 등 dashboard -->
               <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
                 <div
                   id="temp"
@@ -346,9 +388,9 @@ http://www.tooplate.com/view/2102-constructive
             <div class="row">
               <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
                 <div class="media tm-bg-transparent-black tm-border-white">
-                  <i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+                  <img class = "insert-img" src = "./img/sanga.jpg" height = "200px" width = "150px" padding = "100px"></img>
                   <div class="media-body">
-                    <h3>HTML Templates</h3>
+                    <h3>정상아</h3>
                     <p>
                       We provide a variety of templates for you at no cost.
                       Please spread a word about
@@ -364,11 +406,9 @@ http://www.tooplate.com/view/2102-constructive
               </div>
               <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
                 <div class="media tm-bg-transparent-black tm-border-white">
-                  <i
-                    class="fas fa-map-pin mr-4 tm-icon-circled tm-icon-media"
-                  ></i>
+                  <img class = "insert-img" src = "./img/insoo.jpg" height = "200px" width = "150px" padding = "100px"></img>
                   <div class="media-body">
-                    <h3>Free Images</h3>
+                    <h3>신인수</h3>
                     <p>
                       Photos by
                       <a href="https://unsplash.com" target="_blank"
@@ -382,9 +422,9 @@ http://www.tooplate.com/view/2102-constructive
               </div>
               <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
                 <div class="media tm-bg-transparent-black tm-border-white">
-                  <i class="fab fa-fly mr-4 tm-icon-circled tm-icon-media"></i>
+                  <img class = "insert-img" src = "./img/dohyun.jpg" height = "200px" width = "150px" padding = "100px"></img>
                   <div class="media-body">
-                    <h3>Phasellus eleifend</h3>
+                    <h3>박도현</h3>
                     <p>
                       Phasellus feugiat scelerisque sapien, ac ornare arcu
                       finibus sed. Aenean ultrices nisi sit amet facilisis
@@ -395,11 +435,9 @@ http://www.tooplate.com/view/2102-constructive
               </div>
               <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
                 <div class="media tm-bg-transparent-black tm-border-white">
-                  <i
-                    class="fab fa-linode mr-4 tm-icon-circled tm-icon-media"
-                  ></i>
+                  <img class = "insert-img" src = "./img/jaehyeok.jpg" height = "200px" width = "150px" padding = "100px"></img>
                   <div class="media-body">
-                    <h3>Phasellus eleifend</h3>
+                    <h3>신재혁</h3>
                     <p>
                       Phasellus feugiat scelerisque sapien, ac ornare arcu
                       finibus sed. Aenean ultrices nisi sit amet facilisis
@@ -483,11 +521,74 @@ http://www.tooplate.com/view/2102-constructive
               </div>
             </div>
           </section>
+
+          <!-- section 5-->
+          <section id="tm-section-5" class="tm-section">
+            <div class="row mb-4">
+              <header class="col-xl-12">
+                <h2 class="tm-text-shadow">Control Page</h2>
+              </header>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div class="media tm-bg-transparent-black tm-border-white">
+                  <img class = "insert-img invert-img"  src = "./img/airConditioner.png" height = "120px" width = "120px" padding = "100px"></img>
+                  <div class="media-body">
+                    <h3 id = "air-condition" >Air Conditioner</h3>
+                    <label class="switch">
+                      <input id = "air-condition-toggle" type="checkbox" />
+                      <span class="slider round"></span>
+                    </label>
+                    <p id = "air-condition-status">Off</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div class="media tm-bg-transparent-black tm-border-white">
+                  <img class = "insert-img invert-img" src = "./img/humidifier.png"  height = "120px" width = "120px" padding = "100px"></img>
+                  <div class="media-body">
+                    <h3 id = "humidifier">Humidifier</h3>
+                    <label class="switch">
+                      <input id = "humidifier-toggle" type="checkbox" />
+                      <span class="slider round"></span>
+                    </label>
+                    <p id = "humidifier-status">Off</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div class="media tm-bg-transparent-black tm-border-white">
+                  <img class = "insert-img invert-img" src = "./img/fan.png"  height = "120px" width = "120px" padding = "100px"></img>
+                  <div class="media-body">
+                    <h3 id = "fan">Fan</h3>
+                    <label class="switch">
+                      <input id = "fan-toggle" type="checkbox" />
+                      <span class="slider round"></span>
+                    </label>
+                    <p id = "fan-status">Off</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div class="media tm-bg-transparent-black tm-border-white">
+                  <img class = "insert-img invert-img" src = "./img/heater.png"  height = "120px" width = "120px" padding = "100px"></img>
+                  <div class="media-body">
+                    <h3 id ="heater">Heater</h3>
+                    <label class="switch">
+                      <input id = "heater-toggle" type="checkbox" />
+                      <span class="slider round"></span>
+                    </label>
+                    <p id = "heater-status">Off</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
         <!-- .tm-content -->
         <footer class="footer-link">
           <p class="tm-copyright-text">
-            Copyright &copy; 2018 Constructive Co. Ltd. - Design: Tooplate
+            Copyright &copy; 2022 Asgard
           </p>
         </footer>
       </div>

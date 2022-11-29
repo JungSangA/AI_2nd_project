@@ -1,20 +1,36 @@
 const modal = document.querySelector(".modal-div");
-const closeBtn = document.getElementById("closeBtn");
+const sensorCloseBtn = document.getElementById("sensor-closeBtn");
+const cctvCloseBtn = document.getElementById("cctv-closeBtn");
 const overlay = modal.querySelector(".modal-overlay");
 const content = modal.querySelector(".modal-content h2");
 const dash = document.getElementById("dashboard");
+const modalSensor = document.getElementById("modal-sensor");
+const modalCctv = document.getElementById("modal-cctv");
 
 // chart.js 쓰기
 function getChart(viewSensor) {
-  window.chartColors = {
-    red: "rgb(255, 99, 132)",
-    orange: "rgb(255, 159, 64)",
-    yellow: "rgb(255, 205, 86)",
-    green: "rgb(75, 192, 192)",
-    blue: "rgb(54, 162, 235)",
-    purple: "rgb(153, 102, 255)",
-    grey: "rgb(231,233,237)",
-  };
+  let color = "rgb(231,233,237)";
+  // 색깔 구분하기
+  if (viewSensor === "temp") {
+    // red
+    color = "rgb(255, 99, 132)";
+  } else if (viewSensor === "humid") {
+    // blue
+    color = "rgb(54, 162, 235)";
+  } else if (viewSensor === "illumination") {
+    // orange
+    color = "rgb(255, 159, 64)";
+  } else if (viewSensor === "gas") {
+    // purple
+    color = "rgb(153, 102, 255)";
+  } else if (viewSensor === "co2") {
+    // green
+    color = "rgb(75, 192, 192)";
+  } else if (viewSensor === "dust") {
+    // grey
+    color = "rgb(231,233,237)";
+  }
+
   const data = [
     { time: "2022-11-22T11:25:21Z", temp: 21, humid: 32 },
     { time: "2022-11-22T11:25:22Z", temp: 21, humid: 32 },
@@ -139,9 +155,8 @@ function getChart(viewSensor) {
       datasets: [
         {
           label: viewSensor,
-          backgroundColor: window.chartColors.red,
-          borderColor: window.chartColors.red,
-
+          backgroundColor: color,
+          borderColor: color,
           data: sensorArr,
           fill: false,
         },
@@ -190,23 +205,23 @@ const openModal = () => {
 };
 const closeModal = () => {
   modal.classList.add("hidden");
+  modalSensor.classList.add("hidden");
+  modalCctv.classList.add("hidden");
+  modalCctv.classList.remove("table");
 };
 overlay.addEventListener("click", closeModal);
-closeBtn.addEventListener("click", closeModal);
+sensorCloseBtn.addEventListener("click", closeModal);
+cctvCloseBtn.addEventListener("click", closeModal);
 
 // 온도 클릭
 const temp = dash.querySelector("#temp");
 const tempClick = () => {
   const sensor = temp.querySelector(".media-body .sensor");
-
-  //
-  // DB (temp) -> 테이블검색을 하고, 몇분동안 data를 가지고 와서
-
   // data값 변경
   content.innerHTML = "온도";
   getChart("temp");
-  // 그래프로 그려줌
-  modal.classList.remove("hidden");
+  modalSensor.classList.remove("hidden");
+  openModal();
 };
 temp.addEventListener("click", tempClick);
 
@@ -216,7 +231,8 @@ const humClick = () => {
   const sensor = hum.querySelector(".media-body .sensor");
   content.innerHTML = "습도";
   getChart("humid");
-  modal.classList.remove("hidden");
+  modalSensor.classList.remove("hidden");
+  openModal();
 };
 hum.addEventListener("click", humClick);
 
@@ -224,8 +240,11 @@ hum.addEventListener("click", humClick);
 const ill = dash.querySelector("#ill");
 const illClick = () => {
   const sensor = ill.querySelector(".media-body .sensor");
-  content.innerHTML = sensor.innerHTML;
-  modal.classList.remove("hidden");
+  // data값 변경
+  content.innerHTML = "조명";
+  getChart("illumination");
+  modalSensor.classList.remove("hidden");
+  openModal();
 };
 ill.addEventListener("click", illClick);
 
@@ -233,8 +252,11 @@ ill.addEventListener("click", illClick);
 const gas = dash.querySelector("#gas");
 const gasClick = () => {
   const sensor = gas.querySelector(".media-body .sensor");
-  content.innerHTML = sensor.innerHTML;
-  modal.classList.remove("hidden");
+  // data값 변경
+  content.innerHTML = "가스";
+  getChart("gas");
+  modalSensor.classList.remove("hidden");
+  openModal();
 };
 gas.addEventListener("click", gasClick);
 
@@ -242,8 +264,11 @@ gas.addEventListener("click", gasClick);
 const co2 = dash.querySelector("#co2");
 const co2Click = () => {
   const sensor = co2.querySelector(".media-body .sensor");
-  content.innerHTML = sensor.innerHTML;
-  modal.classList.remove("hidden");
+  // data값 변경
+  content.innerHTML = "이산화탄소";
+  getChart("co2");
+  modalSensor.classList.remove("hidden");
+  openModal();
 };
 co2.addEventListener("click", co2Click);
 
@@ -251,7 +276,85 @@ co2.addEventListener("click", co2Click);
 const dust = dash.querySelector("#dust");
 const dustClick = () => {
   const sensor = dust.querySelector(".media-body .sensor");
-  content.innerHTML = sensor.innerHTML;
-  modal.classList.remove("hidden");
+  // data값 변경
+  content.innerHTML = "먼지";
+  getChart("dust");
+  modalSensor.classList.remove("hidden");
+  openModal();
 };
 dust.addEventListener("click", dustClick);
+
+// 카메라 클릭
+const cctv = dash.querySelector("#cctv");
+const cctvClick = () => {
+  modalCctv.classList.remove("hidden");
+  modalCctv.classList.add("table");
+  openModal();
+};
+cctv.addEventListener("click", cctvClick);
+
+// toggle 버튼 구현
+// 에어컨
+var airConditionToggle = $("input[id='air-condition-toggle']");
+airConditionToggle.click(function () {
+  const airConditionStatus = document.getElementById("air-condition-status");
+  const airCondition = document.getElementById("air-condition");
+  if (airConditionStatus.innerHTML === "Off") {
+    airConditionStatus.innerHTML = "On";
+    airConditionStatus.style.color = "blue";
+    airCondition.style.color = "blue";
+  } else {
+    airConditionStatus.innerHTML = "Off";
+    airConditionStatus.style.color = "white";
+    airCondition.style.color = "white";
+  }
+  //  $("p").toggle();
+});
+
+// 습도조절기
+var humidifierToggle = $("input[id='humidifier-toggle']");
+humidifierToggle.click(function () {
+  const humidifierStatus = document.getElementById("humidifier-status");
+  const humidifier = document.getElementById("humidifier");
+  if (humidifierStatus.innerHTML === "Off") {
+    humidifierStatus.innerHTML = "On";
+    humidifierStatus.style.color = "blue";
+    humidifier.style.color = "blue";
+  } else {
+    humidifierStatus.innerHTML = "Off";
+    humidifierStatus.style.color = "white";
+    humidifier.style.color = "white";
+  }
+});
+
+// 팬
+var fanToggle = $("input[id='fan-toggle']");
+fanToggle.click(function () {
+  const fanStatus = document.getElementById("fan-status");
+  const fan = document.getElementById("fan");
+  if (fanStatus.innerHTML === "Off") {
+    fanStatus.innerHTML = "On";
+    fanStatus.style.color = "blue";
+    fan.style.color = "blue";
+  } else {
+    fanStatus.innerHTML = "Off";
+    fanStatus.style.color = "white";
+    fan.style.color = "white";
+  }
+});
+
+// 히터
+var heaterToggle = $("input[id='heater-toggle']");
+heaterToggle.click(function () {
+  const heaterStatus = document.getElementById("heater-status");
+  const heater = document.getElementById("heater");
+  if (heaterStatus.innerHTML === "Off") {
+    heaterStatus.innerHTML = "On";
+    heaterStatus.style.color = "blue";
+    heater.style.color = "blue";
+  } else {
+    heaterStatus.innerHTML = "Off";
+    heaterStatus.style.color = "white";
+    heater.style.color = "white";
+  }
+});
