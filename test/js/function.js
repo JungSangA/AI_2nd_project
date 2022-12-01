@@ -30,174 +30,89 @@ function getChart(viewSensor) {
     // grey
     color = "rgb(231,233,237)";
   }
-
-  const data = [
-    { time: "2022-11-22T11:25:21Z", temp: 21, humid: 32 },
-    { time: "2022-11-22T11:25:22Z", temp: 21, humid: 32 },
-    { time: "2022-11-22T11:25:23Z", temp: 21, humid: 32 },
-    { time: "2022-11-22T11:25:24Z", temp: 21, humid: 32 },
-    { time: "2022-11-22T11:25:25Z", temp: 21, humid: 32 },
-    { time: "2022-11-22T11:25:26Z", temp: 21, humid: 32 },
-    { time: "2022-11-22T11:25:27Z", temp: 21, humid: 33 },
-    { time: "2022-11-22T11:25:28Z", temp: 21, humid: 33 },
-    { time: "2022-11-22T11:25:29Z", temp: 21, humid: 33 },
-    { time: "2022-11-22T11:25:30Z", temp: 21, humid: 33 },
-    { time: "2022-11-22T11:25:31Z", temp: 21, humid: 33 },
-    { time: "2022-11-22T11:25:32Z", temp: 21, humid: 33 },
-    { time: "2022-11-22T11:25:33Z", temp: 21, humid: 33 },
-    { time: "2022-11-22T11:25:34Z", temp: 21, humid: 33 },
-    { time: "2022-11-22T11:25:35Z", temp: 21, humid: 33 },
-    { time: "2022-11-22T11:25:36Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:37Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:38Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:39Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:40Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:41Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:42Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:43Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:44Z", temp: 21, humid: 35 },
-    { time: "2022-11-22T11:25:45Z", temp: 21, humid: 35 },
-    { time: "2022-11-22T11:25:46Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:47Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:48Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:49Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:50Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:51Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:52Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:53Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:54Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:55Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:56Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:25:57Z", temp: 21, humid: 35 },
-    { time: "2022-11-22T11:25:58Z", temp: 21, humid: 35 },
-    { time: "2022-11-22T11:25:59Z", temp: 21, humid: 35 },
-    { time: "2022-11-22T11:26:00Z", temp: 21, humid: 35 },
-    { time: "2022-11-22T11:26:01Z", temp: 21, humid: 35 },
-    { time: "2022-11-22T11:26:02Z", temp: 21, humid: 35 },
-    { time: "2022-11-22T11:26:03Z", temp: 21, humid: 35 },
-    { time: "2022-11-22T11:26:04Z", temp: 21, humid: 35 },
-    { time: "2022-11-22T11:26:05Z", temp: 21, humid: 35 },
-    { time: "2022-11-22T11:26:06Z", temp: 21, humid: 35 },
-    { time: "2022-11-22T11:26:07Z", temp: 21, humid: 35 },
-    { time: "2022-11-22T11:26:08Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:26:09Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:26:10Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:26:11Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:26:12Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:26:13Z", temp: 21, humid: 34 },
-    { time: "2022-11-22T11:26:14Z", temp: 22, humid: 34 },
-    { time: "2022-11-22T11:26:15Z", temp: 22, humid: 34 },
-    { time: "2022-11-22T11:26:16Z", temp: 22, humid: 34 },
-    { time: "2022-11-22T11:26:17Z", temp: 22, humid: 34 },
-    { time: "2022-11-22T11:26:18Z", temp: 22, humid: 34 },
-    { time: "2022-11-22T11:26:19Z", temp: 22, humid: 34 },
-    { time: "2022-11-22T11:26:20Z", temp: 22, humid: 34 },
-    { time: "2022-11-22T11:26:21Z", temp: 22, humid: 34 },
-    { time: "2022-11-22T11:26:22Z", temp: 22, humid: 34 },
-    { time: "2022-11-22T11:26:23Z", temp: 22, humid: 33 },
-    { time: "2022-11-22T11:26:24Z", temp: 22, humid: 33 },
-    { time: "2022-11-22T11:26:25Z", temp: 22, humid: 33 },
-    { time: "2022-11-22T11:26:26Z", temp: 22, humid: 33 },
-    { time: "2022-11-22T11:26:27Z", temp: 22, humid: 33 },
-    { time: "2022-11-22T11:26:28Z", temp: 22, humid: 33 },
-    { time: "2022-11-22T11:26:29Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:30Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:31Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:32Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:33Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:34Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:35Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:36Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:37Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:38Z", temp: 20, humid: 32 },
-    { time: "2022-11-22T11:26:39Z", temp: 21, humid: 33 },
-    { time: "2022-11-22T11:26:40Z", temp: 23, humid: 33 },
-    { time: "2022-11-22T11:26:41Z", temp: 22, humid: 33 },
-    { time: "2022-11-22T11:26:42Z", temp: 22, humid: 33 },
-    { time: "2022-11-22T11:26:43Z", temp: 22, humid: 33 },
-    { time: "2022-11-22T11:26:44Z", temp: 22, humid: 33 },
-    { time: "2022-11-22T11:26:45Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:46Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:47Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:48Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:49Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:50Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:51Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:52Z", temp: 22, humid: 32 },
-    { time: "2022-11-22T11:26:53Z", temp: 22, humid: 31 },
-    { time: "2022-11-22T11:26:54Z", temp: 22, humid: 31 },
-    { time: "2022-11-22T11:26:55Z", temp: 22, humid: 31 },
-    { time: "2022-11-22T11:26:56Z", temp: 22, humid: 31 },
-    { time: "2022-11-22T11:26:57Z", temp: 20, humid: 31 },
-    { time: "2022-11-22T11:26:58Z", temp: 21, humid: 31 },
-    { time: "2022-11-22T11:26:59Z", temp: 23, humid: 31 },
-    { time: "2022-11-22T16:48:17Z", temp: 24, humid: 34 },
-  ];
-  var chart = document.getElementById("chart").getContext("2d");
-  var timeArr = [];
-  var sensorArr = [];
-  for (i = 0; i < data.length; i++) {
-    // console.log(data[i]);
-    timeArr.push(data[i].time.substring(11, 19));
-    if (viewSensor == "temp") {
-      sensorArr.push(data[i].temp);
-    } else if (viewSensor == "humid") {
-      sensorArr.push(data[i].humid);
-    }
-  }
-  if (window.chart2 != undefined) {
-    window.chart2.destroy();
-  }
-  window.chart2 = new Chart(chart, {
-    type: "line",
-    data: {
-      labels: timeArr,
-      datasets: [
-        {
-          label: viewSensor,
-          backgroundColor: color,
-          borderColor: color,
-          data: sensorArr,
-          fill: false,
+  $.ajax({
+    url: "http://192.168.70.191:5025/test1/index/get/",
+    type: "GET",
+    datatype: "json",
+    success: function (data) {
+      // console.log(data);
+      var chart = document.getElementById("chart").getContext("2d");
+      var timeArr = [];
+      var sensorArr = [];
+      for (i = 0; i < data.length; i++) {
+        // console.log(data[i]);
+        timeArr.push(data[i].d_time.substr(11, 8));
+        if (viewSensor == "temp") {
+          sensorArr.push(data[i].d_tem);
+        } else if (viewSensor == "humid") {
+          sensorArr.push(data[i].d_hum);
+        } else if (viewSensor == "illumination") {
+          sensorArr.push(data[i].d_ill);
+        } else if (viewSensor == "gas") {
+          sensorArr.push(data[i].d_voc);
+        } else if (viewSensor == "co2") {
+          sensorArr.push(data[i].d_co2);
+        } else if (viewSensor == "dust") {
+          sensorArr.push(data[i].d_pm);
+        }
+      }
+      if (window.chart2 != undefined) {
+        window.chart2.destroy();
+      }
+      window.chart2 = new Chart(chart, {
+        type: "line",
+        data: {
+          labels: timeArr,
+          datasets: [
+            {
+              label: viewSensor,
+              backgroundColor: color,
+              borderColor: color,
+              data: sensorArr,
+              fill: false,
+            },
+          ],
         },
-      ],
-    },
-    options: {
-      responsive: true,
-      title: {
-        display: true,
-        text: "Latest 100 Temp chart",
-      },
-      tooltips: {
-        mode: "index",
-        intersect: false,
-      },
-      hover: {
-        mode: "nearest",
-        intersect: true,
-      },
-      scales: {
-        xAxes: [
-          {
+        options: {
+          responsive: true,
+          title: {
             display: true,
-            scaleLabel: {
-              display: true,
-              // labelString: "Time",
-            },
+            text: "Latest 100 Temp chart",
           },
-        ],
-        yAxes: [
-          {
-            display: true,
-            scaleLabel: {
-              display: true,
-            },
+          tooltips: {
+            mode: "index",
+            intersect: false,
           },
-        ],
-      },
+          hover: {
+            mode: "nearest",
+            intersect: true,
+          },
+          scales: {
+            xAxes: [
+              {
+                display: true,
+                scaleLabel: {
+                  display: true,
+                  // labelString: "Time",
+                },
+              },
+            ],
+            yAxes: [
+              {
+                display: true,
+                scaleLabel: {
+                  display: true,
+                },
+              },
+            ],
+          },
+        },
+      });
     },
   });
   //
+  // modal.classList.add("hidden");
+  // modal.classList.remove("hidden");
 }
 
 const openModal = () => {
@@ -213,13 +128,15 @@ overlay.addEventListener("click", closeModal);
 sensorCloseBtn.addEventListener("click", closeModal);
 cctvCloseBtn.addEventListener("click", closeModal);
 
+let targetSensor = "temp";
 // 온도 클릭
 const temp = dash.querySelector("#temp");
 const tempClick = () => {
   const sensor = temp.querySelector(".media-body .sensor");
   // data값 변경
   content.innerHTML = "온도";
-  getChart("temp");
+  targetSensor = "temp";
+  getChart(targetSensor);
   modalSensor.classList.remove("hidden");
   openModal();
 };
@@ -230,7 +147,8 @@ const hum = dash.querySelector("#hum");
 const humClick = () => {
   const sensor = hum.querySelector(".media-body .sensor");
   content.innerHTML = "습도";
-  getChart("humid");
+  targetSensor = "humid";
+  getChart(targetSensor);
   modalSensor.classList.remove("hidden");
   openModal();
 };
@@ -242,7 +160,8 @@ const illClick = () => {
   const sensor = ill.querySelector(".media-body .sensor");
   // data값 변경
   content.innerHTML = "조명";
-  getChart("illumination");
+  targetSensor = "illumination";
+  getChart(targetSensor);
   modalSensor.classList.remove("hidden");
   openModal();
 };
@@ -254,7 +173,8 @@ const gasClick = () => {
   const sensor = gas.querySelector(".media-body .sensor");
   // data값 변경
   content.innerHTML = "가스";
-  getChart("gas");
+  targetSensor = "gas";
+  getChart(targetSensor);
   modalSensor.classList.remove("hidden");
   openModal();
 };
@@ -266,7 +186,8 @@ const co2Click = () => {
   const sensor = co2.querySelector(".media-body .sensor");
   // data값 변경
   content.innerHTML = "이산화탄소";
-  getChart("co2");
+  targetSensor = "co2";
+  getChart(targetSensor);
   modalSensor.classList.remove("hidden");
   openModal();
 };
@@ -278,7 +199,8 @@ const dustClick = () => {
   const sensor = dust.querySelector(".media-body .sensor");
   // data값 변경
   content.innerHTML = "먼지";
-  getChart("dust");
+  targetSensor = "dust";
+  getChart(targetSensor);
   modalSensor.classList.remove("hidden");
   openModal();
 };
@@ -292,6 +214,8 @@ const cctvClick = () => {
   openModal();
 };
 cctv.addEventListener("click", cctvClick);
+
+setInterval(() => getChart(targetSensor), 3000);
 
 // toggle 버튼 구현
 // 에어컨

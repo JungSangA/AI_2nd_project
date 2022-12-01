@@ -7,20 +7,8 @@ function refresh() {
   const curGas = document.getElementById("cur-gas");
   const curCo2 = document.getElementById("cur-co2");
   const curDust = document.getElementById("cur-dust");
-  $.ajax({
-    url: "http://192.168.70.191:5025/test1/index/get/",
-    type: "GET",
-    // datatype: "json",
-    success: function (data) {
-      // console.log(data);
-      curTemp.innerHTML = `${data[99].d_tem}℃`;
-      curHum.innerHTML = `${data[99].d_hum}%`;
-      curIll.innerHTML = `${data[99].d_ill}lx`;
-      curGas.innerHTML = `${data[99].d_voc}`;
-      curCo2.innerHTML = `${data[99].d_co2}ppm`;
-      curDust.innerHTML = `${data[99].d_pm}ug/㎥`;
-    },
-  });
+  // curTemp.innerHTML = `${}`;
+  // curHum.innerHTML = `${}`;
 }
 
 refresh();
