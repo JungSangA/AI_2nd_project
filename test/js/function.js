@@ -31,7 +31,7 @@ function getChart(viewSensor) {
     color = "rgb(231,233,237)";
   }
   $.ajax({
-    url: "http://192.168.70.191:5025/test1/index/get/",
+    url: "http://192.168.70.228:5025/test1/index/get/",
     type: "GET",
     datatype: "json",
     success: function (data) {
