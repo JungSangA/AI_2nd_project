@@ -1,0 +1,87 @@
+.click:hover {
+  background-color: silver;
+  cursor: pointer;
+  height: 110%;
+  width: 105%;
+}
+.click:hover > #cur-temp {
+  background-color: red;
+}
+
+.modal-div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.modal-content {
+  background-color: silver;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: relative; */
+  text-align: center;
+  padding: 50px 40px;
+  border-radius: 10px;
+  width: 60%;
+  height: 550px;
+  top: 0px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.hidden {
+  display: none;
+}
+.table {
+  display: table;
+}
+
+.cur {
+  font-size: 35px;
+}
+
+.closeBtn {
+  margin-top: 15px;
+  border-radius: 10px;
+  width: 50px;
+}
+
+.insert-img {
+  margin-right: 20px;
+}
+
+#chart {
+  max-width: 640px;
+  max-height: 500px;
+}
+
+.cctv-box {
+  display: table-cell;
+  vertical-align: middle;
+  /* overflow: hidden; */
+  margin-bottom: 30px;
+  display: inline;
+}
+
+.cctv {
+  max-width: 480px;
+  max-height: 320px;
+  object-fit: cover;
+}
+
+.co2-px{
+  font-size: 15px;
+}

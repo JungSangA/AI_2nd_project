@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Constructive HTML Template</title>
+    <!--
+
+Template 2102 Constructive
+
+http://www.tooplate.com/view/2102-constructive
+
+-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"
+    />
+    <!-- CSS 및 JS 파일 -->
+    <link rel="stylesheet" href="/static/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/magnific-popup.css" />
+    <link rel="stylesheet" type="text/css" href="/static/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="/static/slick/slick-theme.css" />
+    <link rel="stylesheet" href="/static/css/tooplate-style.css" />
+    <link rel="stylesheet" href="/static/css/function.css" />
+    <link rel="stylesheet" href="/static/css/toggle.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    
+    <script>
+      var renderPage = true;
+
+      if (
+        navigator.userAgent.indexOf("MSIE") !== -1 ||
+        navigator.appVersion.indexOf("Trident/") > 0
+      ) {
+        /* Microsoft Internet Explorer detected in. */
+        alert(
+          "Please view this in a modern browser such as Chrome or Microsoft Edge."
+        );
+        renderPage = false;
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- Loader -->
+    <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="container-fluid tm-main">
+      <div class="row tm-main-row">
+        <!-- Sidebar -->
+        <div
+          id="tmSideBar"
+          class="col-xl-3 col-lg-4 col-md-12 col-sm-12 sidebar"
+        >
+          <button id="tmMainNavToggle" class="menu-icon">&#9776;</button>
+
+          <div class="inner">
+            <nav id="tmMainNav" class="tm-main-nav">
+              <h1 id = "year">2022년</h1>
+              <h1 id = "today">11월 28일</h1>
+              <h2 id = "time">10:15:39</h2>
+              <ul>
+                <li>
+                  <a
+                    href="#intro"
+                    id="tmNavLink1"
+                    class="scrolly active"
+                    data-bg-img="constructive_bg_01.jpg"
+                    data-page="#tm-section-1"
+                  >
+                    <i class="fas tm-nav-fa-icon">
+                      <img class = "invert-img" src="/static/img/home.png" height = "35px" width = "35px">
+                    </i>
+                    <span>DashBoard</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#control"
+                    class="scrolly"
+                    data-bg-img="constructive_bg_02.jpg"
+                    data-page="#tm-section-5"
+                    data-page-type="carousel"
+                  >
+                     <i class="fas tm-nav-fa-icon">
+                      <img class = "invert-img" src="/static/img/settings.png" height = "30px" width = "30px">
+                    </i>
+                    <span>Control</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#products"
+                    id="tmNavLink2"
+                    class="scrolly"
+                    data-bg-img="constructive_bg_02.jpg"
+                    data-page="#tm-section-2"
+                    data-page-type="carousel"
+                  >
+                     <i class="fas tm-nav-fa-icon">
+                      <img class = "invert-img" src="/static/img/open-book.png" height = "30px" width = "30px">
+                    </i>
+                    <span>Our Products</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#company"
+                    class="scrolly"
+                    data-bg-img="constructive_bg_03.jpg"
+                    data-page="#tm-section-3"
+                  >
+                     <i class="fas tm-nav-fa-icon">
+                      <img class = "invert-img" src="/static/img/group.png" height = "30px" width = "30px">
+                    </i>
+                    <span>Our Team</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#contact"
+                    class="scrolly"
+                    data-bg-img="constructive_bg_04.jpg"
+                    data-page="#tm-section-4"
+                  >
+                     <i class="fas tm-nav-fa-icon">
+                      <img class = "invert-img" src="/static/img/chat.png" height = "30px" width = "30px">
+                    </i>
+                    <span>Contact Us</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 tm-content">
+
+          <!-- modal 창 띄우기 -->
+          <div class="modal-div hidden">
+            <div class="modal-overlay"></div>
+            <!-- sensors -->
+            <div
+              id = "modal-sensor"
+              class="modal-content hidden">
+              <h2 style="color: black">blank</h2>
+              <canvas id="chart"> chart 정보 입력 </canvas>
+              <button id="sensor-closeBtn" class = "closeBtn">❌</button>
+            </div>
+            <!-- cctv -->
+            <div id = "modal-cctv" class = "modal-content hidden" style="width: 40%; height: 20%;">
+              <h2 style="color: black">카메라</h2>
+              <div class = "cctv-box">
+                <img class = "cctv" src = "http://172.20.10.7:8091/?action=stream" />
+              </div>
+              <br/>
+              <button id="cctv-closeBtn" class = "closeBtn">❌</button>
+            </div>
+          </div>
+
+          <!-- section 1 -->
+          <section
+            id="tm-section-1"
+            class="tm-section"
+            style="position: relative"
+          >
+            <div class="row mb-4">
+              <header class="col-xl-12">
+                <h2 class="tm-text-shadow">Dashboard</h2>
+              </header>
+            </div>
+
+            <!-- Dashboard -->
+            <div id="dashboard" class="row">
+              <!-- 카메라 dashboard -->
+              <div class="col-sm-12 col-md-6 col-lg-12 mb-4">
+                <div id = "cctv" class="media tm-bg-transparent-black tm-border-white click">
+                <i class="tm-icon-circled tm-icon-media">
+                  <img
+                    class="invert-img"
+                    src="/static/img/cctv.png"
+                    height="60"
+                    width="60"
+                  /></i>
+                  <div class="media-body">
+                    <h3>카메라</h3>
+                    <!-- <div class = "cctv-box">
+                      <img class = "cctv" src = "http://192.168.70.20:8091/?action=stream" />
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- 온도,습도,조도,가스,CO2,먼지 등 dashboard -->
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div
+                  id="temp"
+                  class="media tm-bg-transparent-black tm-border-white click"
+                >
+                  <i class="tm-icon-circled tm-icon-media">
+                    <img
+                      class="invert-img"
+                      src="/static/img/temperature.png"
+                      height="60"
+                      width="60"
+                  /></i>
+                  <div class="media-body">
+                    <a class="sensor hidden">temp</a>
+                    <h3>
+                      현재 온도 :
+                      <a id="cur-temp" class="cur">32℃</a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div
+                  id="hum"
+                  class="media tm-bg-transparent-black tm-border-white click"
+                >
+                  <i class="tm-icon-circled tm-icon-media">
+                    <img
+                      class="invert-img"
+                      src="/static/img/humidity.png"
+                      height="60"
+                      width="60"
+                  /></i>
+                  <div class="media-body">
+                    <a class="sensor hidden">humidity</a>
+                    <h3>
+                      현재 습도 :
+                      <a id="cur-hum" class="cur">32%</a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div
+                  id="ill"
+                  class="media tm-bg-transparent-black tm-border-white click"
+                >
+                  <i class="tm-icon-circled tm-icon-media">
+                    <img
+                      class="invert-img"
+                      src="/static/img/illumination.png"
+                      height="60"
+                      width="60"
+                  /></i>
+                  <div class="media-body">
+                    <a class="sensor hidden">illumination</a>
+                    <h3>
+                      현재 조도 :
+                      <a id="cur-ill" class="cur">32lx</a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div
+                  id="gas"
+                  class="media tm-bg-transparent-black tm-border-white click"
+                >
+                  <i class="tm-icon-circled tm-icon-media">
+                    <img
+                      class="invert-img"
+                      src="/static/img/gas-bottle.png"
+                      height="60"
+                      width="60"
+                  /></i>
+                  <div class="media-body">
+                    <a class="sensor hidden">gas</a>
+                    <h3>
+                      현재 가스 :
+                      <a id="cur-gas" class="cur">32</a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div
+                  id="co2"
+                  class="media tm-bg-transparent-black tm-border-white click"
+                >
+                  <i class="tm-icon-circled tm-icon-media">
+                    <img
+                      class="invert-img"
+                      src="/static/img/carbon-dioxide.png"
+                      height="60"
+                      width="60"
+                  /></i>
+                  <div class="media-body">
+                    <a class="sensor hidden">co2</a>
+                    <h3>
+                      현재 CO<a class = "co2-px">2</a> :
+                      <a id="cur-co2" class="cur">32ppm</a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div
+                  id="dust"
+                  class="media tm-bg-transparent-black tm-border-white click"
+                >
+                  <i class="tm-icon-circled tm-icon-media">
+                    <img
+                      class="invert-img"
+                      src="/static/img/dust.png"
+                      height="60"
+                      width="60"
+                  /></i>
+                  <div class="media-body">
+                    <a class="sensor hidden">dust</a>
+                    <h3>
+                      현재 먼지 :
+                      <a id="cur-dust" class="cur">32μg/㎥</a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- section 2 -->
+          <section id="tm-section-2" class="tm-section tm-section-carousel">
+            <div>
+              <header class="mb-4">
+                <h2 class="tm-text-shadow">Our Products</h2>
+              </header>
+              <div class="tm-img-container">
+                <div class="tm-img-slider">
+                  <a href="/static/img/gallery-img-001.jpg" class="tm-slider-img"
+                    ><img
+                      src="/static/img/gallery-img-001.jpg"
+                      alt="Image"
+                      class="img-fluid"
+                  /></a>
+                  <a href="/static/img/gallery-img-011.jpg" class="tm-slider-img"
+                    ><img
+                      src="/static/img/gallery-img-011.jpg"
+                      alt="Image"
+                      class="img-fluid"
+                  /></a>
+                  <a href="/static/img/gallery-img-051.jpg" class="tm-slider-img"
+                    ><img
+                      src="/static/img/gallery-img-051.jpg"
+                      alt="Image"
+                      class="img-fluid"
+                  /></a>
+                  <a href="/static/img/gallery-img-031.jpg" class="tm-slider-img"
+                    ><img
+                      src="/static/img/gallery-img-031.jpg"
+                      alt="Image"
+                      class="img-fluid"
+                  /></a>
+                  <a href="/static/img/gallery-img-041.jpg" class="tm-slider-img"
+                    ><img
+                      src="/static/img/gallery-img-041.jpg"
+                      alt="Image"
+                      class="img-fluid"
+                  /></a>
+                  <a href="/static/img/gallery-img-021.jpg" class="tm-slider-img"
+                    ><img
+                      src="/static/img/gallery-img-021.jpg"
+                      alt="Image"
+                      class="img-fluid"
+                  /></a>
+                  <a href="/static/img/gallery-img-061.jpg" class="tm-slider-img"
+                    ><img
+                      src="/static/img/gallery-img-061.jpg"
+                      alt="Image"
+                      class="img-fluid"
+                  /></a>
+                  <a href="/static/img/gallery-img-071.jpg" class="tm-slider-img"
+                    ><img
+                      src="/static/img/gallery-img-071.jpg"
+                      alt="Image"
+                      class="img-fluid"
+                  /></a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- section 3 -->
+          <section id="tm-section-3" class="tm-section">
+            <div class="row mb-4">
+              <header class="col-xl-12">
+                <h2 class="tm-text-shadow">Our Company</h2>
+              </header>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div class="media tm-bg-transparent-black tm-border-white">
+                  <img class = "insert-img" src = "/static/img/sanga.jpg" height = "200px" width = "150px" padding = "100px"></img>
+                  <div class="media-body">
+                    <h3>정상아</h3>
+                    <p>
+                      ▪ 프로젝트 총괄 <br>
+                      ▪ Web 구현<br>
+                      ▪ IoT 센싱 구현<br>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div class="media tm-bg-transparent-black tm-border-white">
+                  <img class = "insert-img" src = "/static/img/insoo.jpg" height = "200px" width = "150px" padding = "100px"></img>
+                  <div class="media-body">
+                    <h3>신인수</h3>
+                    <p>
+                      ▪ Database 총괄 <br>
+                      ▪ Django 서버를 이용한 데이터 센싱<br>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div class="media tm-bg-transparent-black tm-border-white">
+                  <img class = "insert-img" src = "/static/img/dohyun.jpg" height = "200px" width = "150px" padding = "100px"></img>
+                  <div class="media-body">
+                    <h3>박도현</h3>
+                    <p>
+                      ▪ Django 서버 총괄<br>
+                      ▪ Database 구축<br>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div class="media tm-bg-transparent-black tm-border-white">
+                  <img class = "insert-img" src = "/static/img/jaehyeok.jpg" height = "200px" width = "150px" padding = "100px"></img>
+                  <div class="media-body">
+                    <h3>신재혁</h3>
+                    <p>
+                      ▪ 하드웨어 설계 및 구축
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- section 4 -->
+          <section id="tm-section-4" class="tm-section">
+            <div class="tm-bg-transparent-black tm-contact-box-pad">
+              <div class="row mb-4">
+                <div class="col-sm-12">
+                  <header><h2 class="tm-text-shadow">Contact Us</h2></header>
+                </div>
+              </div>
+              <div class="row tm-page-4-content">
+                <div class="col-md-6 col-sm-12 tm-contact-col">
+                  <div class="contact_message">
+                    <form action="#contact" method="post" class="contact-form">
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          id="contact_name"
+                          name="contact_name"
+                          class="form-control"
+                          placeholder="Name"
+                          required
+                        />
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="email"
+                          id="contact_email"
+                          name="contact_email"
+                          class="form-control"
+                          placeholder="Email"
+                          required
+                        />
+                      </div>
+                      <div class="form-group">
+                        <textarea
+                          id="contact_message"
+                          name="contact_message"
+                          class="form-control"
+                          rows="9"
+                          placeholder="Message"
+                          required
+                        ></textarea>
+                      </div>
+                      <button
+                        type="submit"
+                        class="btn tm-btn-submit tm-btn ml-auto"
+                      >
+                        Submit
+                      </button>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12 tm-contact-col">
+                  <div class="tm-address-box">
+                    <p>
+                      제품에 대한 당신의 의견을 들려주세요.
+                    </p>
+                    <p>
+                      Team. 아스가르드
+                    </p>
+                    <address>
+                      광주인공지능사관학교<br />
+                      광주광역시 동구 제봉로 92 1~3층 인공지능사관학교<br/>
+                      (지번)광주광역시 동구 서석동 47-23 1~3층 인공지능사관학교
+                    </address>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- section 5-->
+          <section id="tm-section-5" class="tm-section">
+            <div class="row mb-4">
+              <header class="col-xl-12">
+                <h2 class="tm-text-shadow">Control Page</h2>
+              </header>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div class="media tm-bg-transparent-black tm-border-white">
+                  <img class = "insert-img invert-img"  src = "/static/img/airConditioner.png" height = "120px" width = "120px" padding = "100px"></img>
+                  <div class="media-body">
+                    <h3 id = "air-condition" >Air Conditioner</h3>
+                    <label class="switch">
+                      <input id = "air-condition-toggle" type="checkbox" />
+                      <span class="slider round"></span>
+                    </label>
+                    <p id = "air-condition-status">Off</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div class="media tm-bg-transparent-black tm-border-white">
+                  <img class = "insert-img invert-img" src = "/static/img/humidifier.png"  height = "120px" width = "120px" padding = "100px"></img>
+                  <div class="media-body">
+                    <h3 id = "humidifier">Humidifier</h3>
+                    <label class="switch">
+                      <input id = "humidifier-toggle" type="checkbox" />
+                      <span class="slider round"></span>
+                    </label>
+                    <p id = "humidifier-status">Off</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div class="media tm-bg-transparent-black tm-border-white">
+                  <img class = "insert-img invert-img" src = "/static/img/fan.png"  height = "120px" width = "120px" padding = "100px"></img>
+                  <div class="media-body">
+                    <h3 id = "fan">Fan</h3>
+                    <label class="switch">
+                      <input id = "fan-toggle" type="checkbox" />
+                      <span class="slider round"></span>
+                    </label>
+                    <p id = "fan-status">Off</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div class="media tm-bg-transparent-black tm-border-white">
+                  <img class = "insert-img invert-img" src = "/static/img/heater.png"  height = "120px" width = "120px" padding = "100px"></img>
+                  <div class="media-body">
+                    <h3 id ="heater">Heater</h3>
+                    <label class="switch">
+                      <input id = "heater-toggle" type="checkbox" />
+                      <span class="slider round"></span>
+                    </label>
+                    <p id = "heater-status">Off</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- .tm-content -->
+        <footer class="footer-link">
+          <p class="tm-copyright-text">
+            Copyright &copy; 2022 Asgard
+          </p>
+        </footer>
+      </div>
+      <!-- row -->
+    </div>
+    <div id="preload-01"></div>
+    <div id="preload-02"></div>
+    <div id="preload-03"></div>
+    <div id="preload-04"></div>
+
+    <script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
+    <script
+      type="text/javascript"
+      src="/static/js/jquery.magnific-popup.min.js"
+    ></script>
+    <script type="text/javascript" src="/static/js/jquery.backstretch.min.js"></script>
+    <script type="text/javascript" src="/static/slick/slick.min.js"></script>
+    <!-- Slick Carousel -->
+
+    <script>
+      var sidebarVisible = false;
+      var currentPageID = "#tm-section-1";
+
+      // Setup Carousel
+      function setupCarousel() {
+        // If current page isn't Carousel page, don't do anything.
+        if ($("#tm-section-2").css("display") == "none") {
+        } else {
+          // If current page is Carousel page, set up the Carousel.
+
+          var slider = $(".tm-img-slider");
+          var windowWidth = $(window).width();
+
+          if (slider.hasClass("slick-initialized")) {
+            slider.slick("destroy");
+          }
+
+          if (windowWidth < 640) {
+            slider.slick({
+              dots: true,
+              infinite: false,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            });
+          } else if (windowWidth < 992) {
+            slider.slick({
+              dots: true,
+              infinite: false,
+              slidesToShow: 2,
+              slidesToScroll: 1,
+            });
+          } else {
+            // Slick carousel
+            slider.slick({
+              dots: true,
+              infinite: false,
+              slidesToShow: 3,
+              slidesToScroll: 2,
+            });
+          }
+
+          // Init Magnific Popup
+          $(".tm-img-slider").magnificPopup({
+            delegate: "a", // child items selector, by clicking on it popup will open
+            type: "image",
+            gallery: { enabled: true },
+            // other options
+          });
+        }
+      }
+
+      // Setup Nav
+      function setupNav() {
+        // Add Event Listener to each Nav item
+        $(".tm-main-nav a").click(function (e) {
+          e.preventDefault();
+
+          var currentNavItem = $(this);
+          changePage(currentNavItem);
+
+          setupCarousel();
+          setupFooter();
+
+          // Hide the nav on mobile
+          $("#tmSideBar").removeClass("show");
+        });
+      }
+
+      function changePage(currentNavItem) {
+        // Update Nav items
+        $(".tm-main-nav a").removeClass("active");
+        currentNavItem.addClass("active");
+
+        $(currentPageID).hide();
+
+        // Show current page
+        currentPageID = currentNavItem.data("page");
+        $(currentPageID).fadeIn(1000);
+
+        // Change background image
+        var bgImg = currentNavItem.data("bgImg");
+        $.backstretch("img/" + bgImg);
+      }
+
+      // Setup Nav Toggle Button
+      function setupNavToggle() {
+        $("#tmMainNavToggle").on("click", function () {
+          $(".sidebar").toggleClass("show");
+        });
+      }
+
+      // If there is enough room, stick the footer at the bottom of page content.
+      // If not, place it after the page content
+      function setupFooter() {
+        var padding = 100;
+        var footerPadding = 40;
+        var mainContent = $("section" + currentPageID);
+        var mainContentHeight = mainContent.outerHeight(true);
+        var footer = $(".footer-link");
+        var footerHeight = footer.outerHeight(true);
+        var totalPageHeight =
+          mainContentHeight + footerHeight + footerPadding + padding;
+        var windowHeight = $(window).height();
+
+        if (totalPageHeight > windowHeight) {
+          $(".tm-content").css(
+            "margin-bottom",
+            footerHeight + footerPadding + "px"
+          );
+          footer.css("bottom", footerHeight + "px");
+        } else {
+          $(".tm-content").css("margin-bottom", "0");
+          footer.css("bottom", "20px");
+        }
+      }
+
+      // Everything is loaded including images.
+      $(window).on("load", function () {
+        // Render the page on modern browser only.
+        if (renderPage) {
+          // Remove loader
+          $("body").addClass("loaded");
+
+          // Page transition
+          var allPages = $(".tm-section");
+
+          // Handle click of "Continue", which changes to next page
+          // The link contains data-nav-link attribute, which holds the nav item ID
+          // Nav item ID is then used to access and trigger click on the corresponding nav item
+          var linkToAnotherPage = $("a.tm-btn[data-nav-link]");
+
+          if (linkToAnotherPage != null) {
+            linkToAnotherPage.on("click", function () {
+              var navItemToHighlight = linkToAnotherPage.data("navLink");
+              $("a" + navItemToHighlight).click();
+            });
+          }
+
+          // Hide all pages
+          allPages.hide();
+
+          $("#tm-section-1").fadeIn();
+
+          // Set up background first page
+          var bgImg = $("#tmNavLink1").data("bgImg");
+
+          $.backstretch("img/" + bgImg, { fade: 500 });
+
+          // Setup Carousel, Nav, and Nav Toggle
+          setupCarousel();
+          setupNav();
+          setupNavToggle();
+          setupFooter();
+
+          // Resize Carousel upon window resize
+          $(window).resize(function () {
+            setupCarousel();
+            setupFooter();
+          });
+        }
+      });
+    </script>
+    <script src="/static/js/function.js"></script>
+    <script src="/static/js/dataRefresh.js"></script>
+  </body>
+</html>

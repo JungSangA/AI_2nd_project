@@ -1,0 +1,14 @@
+<h1>person이 있습니다.</h1>
+
+<table class = 'table-contents' style = 'padding:10px'>
+    <tr>
+        <th>id</th>
+        <th>pw</th>
+    </tr>
+    {% for person in persons %}
+    <tr>
+        <td>{{person.p_id}}</td>
+        <td>{{person.p_pw}}</td>
+    </tr>
+    {% endfor %}
+</table>
